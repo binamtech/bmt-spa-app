@@ -1,0 +1,20 @@
+<nav class="navbar-inverse">
+	<ul class="nav navbar-nav sidebar-nav">
+		<!--<li class="sidebar-brand">
+			<a href="#">
+				File-store
+			</a>
+		</li>-->
+		<li ng-repeat="menuItem in menu">
+			<a ng-href="{{menuItem.state}}" ng-click="menuItemClick($event, menuItem)">
+				<i ng-class="menuItem.iconClass" ng-if="menuItem.iconClass"></i> {{menuItem.title | translate}} <i class="fa fa-fw fa-caret-down" ng-if="menuItem.items && !menuItem.disableCollapse"></i>
+			</a>
+			<ul uib-collapse="menuItem.isCollapsed" ng-if="menuItem.items">
+				<li ng-repeat="submenuItem in menuItem.items">
+					<a ng-href="{{submenuItem.state}}" ng-click="menuItemClick($event, submenuItem)">
+						<i ng-class="submenuItem.iconClass" ng-if="submenuItem.iconClass"></i> {{submenuItem.title | translate}}</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>

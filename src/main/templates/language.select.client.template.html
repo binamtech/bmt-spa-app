@@ -1,0 +1,8 @@
+<li class="dropdown" uib-dropdown ng-if="locales">
+	<a href="" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown">{{activeLocale}}<b class="caret"></b></a>
+	<ul class="dropdown-menu" role="menu">
+		<li ng-repeat="(localeKey, localeValue) in locales">
+			<a href="" ng-click="changeLanguage(localeKey)">{{localeValue}}</a>
+		</li>
+	</ul>
+</li>

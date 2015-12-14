@@ -1,0 +1,43 @@
+{
+  "VIEW_HEADER_HOME": "Главная",
+  "VIEW_HEADER_SETTINGS": "Настройки",
+  "VIEW_HEADER_LOGOUT": "Выход",
+  "VIEW_HEADER_LOGIN": "Вход",
+  "VIEW_HEADER_SIGNUP": "Регистрация",
+  "BUTTON_LANG_EN": "English",
+  "BUTTON_LANG_RU": "Русский",
+
+  "VIEW_HEADER_PROFILE": "Профиль",
+  "VIEW_HEADER_PASSWORD": "Пароль",
+  "VIEW_HEADER_CHANGE_PASSWORD": "Смена пароля",
+  "VIEW_HEADER_USERS": "Пользователи",
+
+  "DIALOG_HEADER_CONFIRM": "Подтверждение",
+
+  "LABEL_USER_ACCOUNT": "Учетная запись",
+  "LABEL_USER_DELETE_ACCOUNT": "Удалить",
+  "LABEL_USER_FIRST_NAME": "Имя",
+  "LABEL_USER_LAST_NAME": "Фамилия",
+  "LABEL_USER_USERNAME": "Имя пользователя",
+  "LABEL_USER_PASSWORD": "Пароль",
+  "LABEL_USER_EMAIL": "Email",
+  "LABEL_USER_ROLE": "Роль",
+  "LABEL_USER_CREATED": "Создан",
+  "LABEL_USER_ACTION": "Действия",
+  "LABEL_USER_REMEMBER_ME": "Запомнить",
+
+  "LABEL_ACTION_CHANGE": "изменить",
+  "LABEL_ACTION_UPDATE_PROFILE": "Сохранить профиль",
+
+  "MSG_USER_DELETE_ERROR": "Ошибка удаления активного пользователя!",
+  "MSG_ACCOUNT_DELETE_CONFIRM": "Подтвердите удаление учетной записи {{username}}!",
+  "MSG_USER_DELETE_CONFIRM": "Подтвердите удаление пользователя {{username}}!",
+
+  "MSG_USER_AUTH_ERROR": "Ошибка аутентификации.",
+  "MSG_USER_SIGNUP_ERROR": "Ошибка регистрации.",
+  "MSG_SERVER_ERROR": "Ошибка сервера!",
+  "MSG_USER_INVALID_CREDENTIAL": "Ошибка учетных данных.",
+  "MSG_PROFILE_UPDATE_SUCCESS": "Профиль успешно обновлен.",
+
+  "DIRECTIVE_LANGUAGE_SELECT_LANGUAGE": "Язык"
+}

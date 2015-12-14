@@ -1,0 +1,43 @@
+{
+  "VIEW_HEADER_HOME": "Home",
+  "VIEW_HEADER_SETTINGS": "Settings",
+  "VIEW_HEADER_LOGOUT": "Logout",
+  "VIEW_HEADER_LOGIN": "Login",
+  "VIEW_HEADER_SIGNUP": "Sign up",
+  "BUTTON_LANG_EN": "English",
+  "BUTTON_LANG_RU": "Russian",
+
+  "VIEW_HEADER_PROFILE": "Profile",
+  "VIEW_HEADER_PASSWORD": "Password",
+  "VIEW_HEADER_CHANGE_PASSWORD": "Change password",
+  "VIEW_HEADER_USERS": "Users",
+
+  "DIALOG_HEADER_CONFIRM": "Confirm dialog",
+
+  "LABEL_USER_ACCOUNT": "Account",
+  "LABEL_USER_DELETE_ACCOUNT": "Delete account",
+  "LABEL_USER_FIRST_NAME": "First name",
+  "LABEL_USER_LAST_NAME": "Last name",
+  "LABEL_USER_USERNAME": "Username",
+  "LABEL_USER_PASSWORD": "Password",
+  "LABEL_USER_EMAIL": "Email",
+  "LABEL_USER_ROLE": "Role",
+  "LABEL_USER_CREATED": "Created",
+  "LABEL_USER_ACTION": "Action",
+  "LABEL_USER_REMEMBER_ME": "Remember me",
+
+  "LABEL_ACTION_CHANGE": "change",
+  "LABEL_ACTION_UPDATE_PROFILE": "Update profile",
+
+  "MSG_USER_DELETE_ERROR": "Unable delete active user!",
+  "MSG_ACCOUNT_DELETE_CONFIRM": "Confirm deleting account {{username}}!",
+  "MSG_USER_DELETE_CONFIRM": "Confirm deleting user {{username}}!",
+
+  "MSG_USER_AUTH_ERROR": "Authentication Failed.",
+  "MSG_USER_SIGNUP_ERROR": "Sign up Failed.",
+  "MSG_SERVER_ERROR": "Oops something went wrong!",
+  "MSG_USER_INVALID_CREDENTIAL": "Invalid credentials.",
+  "MSG_PROFILE_UPDATE_SUCCESS": "Profile successfully updated.",
+
+  "DIRECTIVE_LANGUAGE_SELECT_LANGUAGE": "Language"
+}

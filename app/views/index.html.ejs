@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Title</title>
+	<!-- Bootstrap -->
+	<link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles -->
+	<link href="css/style.css" rel="stylesheet">
+	<!-- Custom Fonts -->
+	<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="wrapper" ng-class="{'sidebar': !sideMenuActive, 'toggled': sideMenuToggled}">
+	<!-- Header -->
+	<div ng-include="'main/views/header.client.view.html'"></div>
+
+	<!-- Page Content -->
+	<div ui-view></div>
+
+	<!-- Footer -->
+	<div ng-include="'main/views/footer.client.view.html'"></div>
+</div>
+
+	<% if (production) { %>
+	<script src="/lib/angular/angular.min.js"></script>
+	<script src="/lib/angular-smart-table/dist/smart-table.min.js"></script>
+
+	<script src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/lib/angular-resource/angular-resource.min.js"></script>
+	<script src="/lib/angular-cookies/angular-cookies.min.js"></script>
+	<script src="/lib/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<script src="/lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+	<script src="/lib/angular-translate/angular-translate.min.js"></script>
+	<script src="/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+	<script src="/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.min.js"></script>
+	<script src="/lib/angular-translate-storage-local/angular-translate-storage-local.min.js"></script>
+	<script src="/lib/angular-translate-handler-log/angular-translate-handler-log.min.js"></script>
+	<script src="/lib/angular-dynamic-locale/dist/tmhDynamicLocale.min.js"></script>
+
+	<script src="app.min.js"></script>
+	<% } else { %>
+	<script src="/lib/angular/angular.js"></script>
+	<script src="/lib/angular-smart-table/dist/smart-table.js"></script>
+	<script src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="/lib/angular-cookies/angular-cookies.js"></script>
+	<script src="/lib/angular-resource/angular-resource.js"></script>
+	<script src="/lib/angular-bootstrap/ui-bootstrap.js"></script>
+	<script src="/lib/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+	<script src="/lib/angular-translate/angular-translate.js"></script>
+	<script src="/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+	<script src="/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+	<script src="/lib/angular-translate-storage-local/angular-translate-storage-local.js"></script>
+	<script src="/lib/angular-translate-handler-log/angular-translate-handler-log.js"></script>
+	<script src="/lib/angular-dynamic-locale/dist/tmhDynamicLocale.js"></script>
+
+	<script src="/application.js"></script>
+
+	<script src="/main/controllers/header.client.controller.js"></script>
+	<script src="/main/services/locale.client.service.js"></script>
+	<script src="/main/directives/language.select.client.directive.js"></script>
+
+	<script src="/users/users.client.module.js"></script>
+	<script src="/users/services/authentication.client.service.js"></script>
+	<script src="/users/controller/authentication.client.controller.js"></script>
+	<script src="/users/services/users.client.service.js"></script>
+	<script src="/users/controller/users.client.controller.js"></script>
+
+	<script src="/shared/navbar/directives/side-nav.directive.js"></script>
+	<script src="/shared/navbar/services/side-nav.service.js"></script>
+
+	<script src="/shared/modal/controllers/confirm.modal.controller.js"></script>
+
+	<script src="/shared/notifications/directives/alert.notification.directive.js"></script>
+	<% } %>
+</body>
+</html>

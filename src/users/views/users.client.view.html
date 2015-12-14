@@ -1,0 +1,43 @@
+<div class="row">
+	<div ng-init="find()">
+		<h2>{{'VIEW_HEADER_USERS' | translate}}</h2>
+		<hr>
+		<bmt-alert-notification alertInfo="{{alertInfo}}" alertError="{{alertError}}"></bmt-alert-notification>
+		<table st-table="userList" class="table table-striped">
+			<thead>
+			<tr>
+				<th>{{'LABEL_USER_FIRST_NAME' | translate}}</th>
+				<th>{{'LABEL_USER_LAST_NAME' | translate}}</th>
+				<th>{{'LABEL_USER_USERNAME' | translate}}</th>
+				<th>{{'LABEL_USER_EMAIL' | translate}}</th>
+				<th>{{'LABEL_USER_ROLE' | translate}}</th>
+				<th>{{'LABEL_USER_CREATED' | translate}}</th>
+				<th>{{'LABEL_USER_ACTION' | translate}}</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="user in userList">
+				<td>{{user.firstName}}</td>
+				<td>{{user.lastName}}</td>
+				<td>{{user.username}}</td>
+				<td>
+					<div ng-show="user.email">
+						<button class="btn btn-sm" popover-placement="top" popover="{{user.email}}" type="button">
+							<i class="glyphicon glyphicon-eye-open"></i>
+						</button>
+						<a ng-href="mailto:{{user.email}}" >{{'LABEL_USER_EMAIL' | translate}}</a>
+					</div>
+				</td>
+				<td>{{user.role}}</td>
+				<td>{{user.created | date:'medium'}}</td>
+				<td>
+					<button type="button" ng-click="delete(user)" class="btn btn-sm btn-danger">
+						<i class="glyphicon glyphicon-remove-circle">
+						</i>
+					</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

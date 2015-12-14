@@ -1,0 +1,37 @@
+<div id="page-content-wrapper">
+	<div class="container-fluid main-view">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<h2>{{'VIEW_HEADER_LOGIN' | translate}}</h2>
+				<hr>
+				<bmt-alert-notification alertError="{{alertError}}"></bmt-alert-notification>
+				<form name="authForm" class="form-horizontal" novalidate>
+					<div class="form-group">
+						<label for="inputUsername" class="control-label col-xs-4">{{'LABEL_USER_USERNAME' | translate}}</label>
+						<div class="col-xs-8">
+							<input type="text" class="form-control" id="inputUsername" placeholder="{{'LABEL_USER_USERNAME' | translate}}" ng-model="user.username" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="control-label col-xs-4">{{'LABEL_USER_PASSWORD' | translate}}</label>
+						<div class="col-xs-8">
+							<input type="password" class="form-control" id="password" placeholder="{{'LABEL_USER_PASSWORD' | translate}}" ng-model="user.password" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-4 col-xs-8">
+							<div class="checkbox">
+								<label><input type="checkbox"> {{'LABEL_USER_REMEMBER_ME' | translate}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-4 col-xs-8">
+							<button type="submit" class="btn btn-primary" ng-disabled="authForm.$invalid" ng-click="login(user.username, user.password)">{{'VIEW_HEADER_LOGIN' | translate}}</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
