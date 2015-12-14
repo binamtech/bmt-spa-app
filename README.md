@@ -47,8 +47,10 @@ A prototype for creating single page applications based on "mean" stack.
  * `npm install -g protractor`
  * `webdriver-manager update`
  * `npm install -g mongoose-data-migrate`
+ 
 ### Install local modules with:
 * `npm install`
+
 ### Install local modules with `bower`:
 * `bower install`
 
