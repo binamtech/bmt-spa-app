@@ -4,8 +4,10 @@ angular.module('users', ['ui.router', 'smart-table']);
 
 angular.module('users').constant('userConfig', {
 	apiPath: 'api/v1/users',
-	authPath: 'api/v1/authenticate',
-	signupPath: 'api/v1/signup'
+	signinPath: 'api/v1/authenticate',
+	signupPath: 'api/v1/signup',
+	signoutPath: 'api/v1/signout',
+	profilePath: 'api/v1/profile'
 });
 
 angular.module('users').constant('userNotifyMessages', {

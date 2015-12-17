@@ -1,7 +1,7 @@
 'use strict';
 
 var users = require('../controllers/users.server.controller'),
-	docs = require('../controllers/docs.server.controller'),
+	//docs = require('../controllers/docs.server.controller'),
 	express = require('express'),
 	restApiPath = require('./../constants').RestApiPath;
 
@@ -23,21 +23,24 @@ module.exports = function (app) {
 		}
 	});
 
-	apiRoutes.post('/signup', users.signup, users.create);
+	apiRoutes.post('/signup', users.signup, users.createUser);
 
 	// route to authenticate a user
 	apiRoutes.post('/authenticate', users.authenticate);
+	apiRoutes.get('/signout', users.signout);
 
 	//only authenticated users allowed for next routes
 
 	// route middleware to verify a token and role
 	apiRoutes.use(users.validateToken);
 
-	apiRoutes.post('/users', users.validateAdmin, users.create);
-	apiRoutes.get('/users', users.validateAdmin, users.list);
-	apiRoutes.get('/users/:userId', users.validateUser, users.read);
-	apiRoutes.put('/users/:userId', users.validateUser, users.update);
-	apiRoutes.delete('/users/:userId', users.validateUser, users.delete);
+	apiRoutes.get('/profile', users.readUserFromToken, users.readUser);
+
+	apiRoutes.post('/users', users.validateAdmin, users.createUser);
+	apiRoutes.get('/users', users.validateAdmin, users.listUser);
+	apiRoutes.get('/users/:userId', users.validateUser, users.readUser);
+	apiRoutes.put('/users/:userId', users.validateUser, users.updateUser);
+	apiRoutes.delete('/users/:userId', users.validateUser, users.deleteUser);
 	apiRoutes.param('userId', users.userByID);
 
 	//todo implement api for catalogs and documents

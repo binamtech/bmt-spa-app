@@ -37,7 +37,17 @@ exports.authenticate = function (req, res) {
 					role: user.role
 				};
 				// create a token
-				var token = jwt.sign({id: user.id}, config.jwtSecret, {expiresIn: 60*1440}); //expires in 24 hours
+				var expiresIn = 60*1440; //expires in 24 hours
+				var token = jwt.sign({id: user.id}, config.jwtSecret, {expiresIn: expiresIn});
+
+				//add token to cookies
+				if (req.body.rememberme) {
+					//save token to cookies with maxAge = token.expiresIn
+					res.cookie('token', token, { maxAge: expiresIn*1000, httpOnly: true });
+				} else {
+					//save token to cookies only for session period
+					res.cookie('token', token, {httpOnly: true });
+				}
 				// return the information including token as JSON
 				return res.json({
 					success: true,
@@ -49,6 +59,13 @@ exports.authenticate = function (req, res) {
 	});
 };
 
+exports.signout = function (req, res) {
+	res.clearCookie('token');
+	return res.json({
+		success: true
+	});
+};
+
 //Authorize user
 //possible roles = ['Admin', 'User']
 function authorizeUser(user) {
@@ -57,7 +74,7 @@ function authorizeUser(user) {
 
 //todo implement token storage and invalidation after changing user's params
 exports.validateToken = function (req, res, next) {
-	var token = req.body.token || req.query.token || req.headers['x-access-token'];
+	var token = req.cookies.token || req.body.token || req.query.token || req.headers['x-access-token'];
 	if (token) {
 		// verifies secret and checks exp
 		jwt.verify(token, config.jwtSecret, function(err, decoded) {
@@ -144,7 +161,15 @@ exports.signup = function (req, res, next) {
 	next();
 };
 
-exports.create = function (req, res) {
+//expand user profile from userId in token
+exports.readUserFromToken = function (req, res, next) {
+	if (req.authUser) {
+		req.user = req.authUser;
+	}
+	next();
+};
+
+exports.createUser = function (req, res) {
 	var newUser = new User(req.body);
 	newUser.save(function (err, user) {
 		if (err) {
@@ -165,7 +190,7 @@ exports.create = function (req, res) {
 	});
 };
 
-exports.list = function (req, res, next) {
+exports.listUser = function (req, res, next) {
 	User.find({}, '-password -salt -provider', function (err, users) {
 		if (err) {
 			return next(err);
@@ -175,7 +200,7 @@ exports.list = function (req, res, next) {
 	});
 };
 
-exports.read = function (req, res) {
+exports.readUser = function (req, res) {
 	var user = req.user;
 	var profile = {
 		id:	user.id,
@@ -202,7 +227,7 @@ exports.userByID = function (req, res, next) {
 	});
 };
 
-exports.update = function (req, res) {
+exports.updateUser = function (req, res) {
 	var userBody = req.body || {};
 	if (req.user) {
 		var user = req.user;
@@ -228,7 +253,7 @@ exports.update = function (req, res) {
 	}
 };
 
-exports.delete = function (req, res) {
+exports.deleteUser = function (req, res) {
 	req.user.remove(function (err) {
 		if (err) {
 			var message = getErrorMessage(err);

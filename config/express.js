@@ -6,7 +6,8 @@ var config = require('./config'),
 	compress = require('compression'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
-	session = require('express-session');
+	cookieParser = require('cookie-parser');
+	//session = require('express-session');
 
 module.exports = function () {
 	var app = express();
@@ -24,14 +25,15 @@ module.exports = function () {
 	}));
 	app.use(bodyParser.json());
 	app.use(methodOverride());
+	app.use(cookieParser());
 
-	if (process.env.NODE_ENV === 'development') {
+	/*if (process.env.NODE_ENV === 'development') {
 		app.use(session({
 			saveUninitialized: true,
 			resave: true,
 			secret: config.sessionSecret
 		}));
-	}
+	}*/
 
 	// allows index.html.ejs to see if we're running in production
 	app.locals.production = (process.env.NODE_ENV === 'production');

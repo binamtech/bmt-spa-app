@@ -21,13 +21,13 @@
 					<div class="form-group">
 						<div class="col-xs-offset-4 col-xs-8">
 							<div class="checkbox">
-								<label><input type="checkbox"> {{'LABEL_USER_REMEMBER_ME' | translate}}</label>
+								<label><input type="checkbox" ng-model="user.rememberme"> {{'LABEL_USER_REMEMBER_ME' | translate}}</label>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-xs-offset-4 col-xs-8">
-							<button type="submit" class="btn btn-primary" ng-disabled="authForm.$invalid" ng-click="login(user.username, user.password)">{{'VIEW_HEADER_LOGIN' | translate}}</button>
+							<button type="submit" class="btn btn-primary" ng-disabled="authForm.$invalid" ng-click="login(user.username, user.password, user.rememberme)">{{'VIEW_HEADER_LOGIN' | translate}}</button>
 						</div>
 					</div>
 				</form>

@@ -51,7 +51,26 @@ mainApplicationModule.config(['$stateProvider', '$locationProvider', '$urlRouter
 					params: {
 						username: null,
 						errorMessage: null,
-						infoMessage: null
+						infoMessage: null,
+						redirectState: null
+					},
+					resolve: {
+						checkLoginState: function($state, $stateParams, UserAuthFactory) {
+							var redirectState = $stateParams.redirectState;
+							return UserAuthFactory.requestRegistration().then(
+								function () {
+									if (redirectState && redirectState.toState) {
+										$state.go(redirectState.toState, redirectState.toParams);
+									} else {
+										$state.go('home');
+									}
+								}).catch(
+								function (err) {
+									//show login page
+									//console.log('show login page', err);
+									return err;
+								});
+						}
 					},
 					access: {
 						requiredLogin: false
@@ -70,22 +89,19 @@ mainApplicationModule.config(['$stateProvider', '$locationProvider', '$urlRouter
 
 mainApplicationModule.run(['$rootScope', '$window', '$state', '$stateParams', 'AuthenticationFactory',
 	function ($rootScope, $window, $state, $stateParams, AuthenticationFactory) {
-		// when the page refreshes, check if the user is already logged in
-		AuthenticationFactory.check();
-
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
 
 		$rootScope.$on('$stateChangeStart',
-				function (event, toState) {//event, toState, toParams, fromState, fromParams
-					if ((toState.access && toState.access.requiredLogin) && !AuthenticationFactory.isLogged) {
-						event.preventDefault();
-						$state.go("login");
+				function (event, toState, toParams) {//event, toState, toParams, fromState, fromParams
+					var stateRequiredLogin = toState.access && toState.access.requiredLogin &&
+							!AuthenticationFactory.isLogged;
+					if (stateRequiredLogin && toState.name !== 'login')  {
+							event.preventDefault();
+							//go to login page with next redirection
+							var params = {redirectState: {toState: toState, toParams: toParams}};
+							$state.go('login', params);
 					} else {
-						// check if user object exists else fetch it. This is incase of a page refresh
-						if (!AuthenticationFactory.user && $window.sessionStorage.user) {
-							AuthenticationFactory.user = JSON.parse($window.sessionStorage.user);
-						}
 						//go to home page if user is logged in
 						if (AuthenticationFactory.isLogged && toState.name === 'login') {
 							event.preventDefault();

@@ -48,7 +48,7 @@ describe('User E2E Tests:', function() {
 			});*/
 
 			expect(browser.getCurrentUrl()).toMatch(/\/#!\/$/);
-			browser.executeScript("return window.sessionStorage.getItem('token');").then(function(retValue) {
+			browser.executeScript("return window.localStorage.getItem('user');").then(function(retValue) {
 				console.log(retValue);
 				expect(retValue).not.toBeNull();
 			});

@@ -61,7 +61,6 @@ describe('Testing Authentication Controller', function () {
 			expect(_AuthenticationFactory.isLogged).toBeTruthy();
 			expect(_AuthenticationFactory.user).toEqualData(res.user);
 
-			expect(_window.sessionStorage.token).toEqual(res.token);
-			expect(_window.sessionStorage.user).toEqual(JSON.stringify(res.user));
+			expect(_window.localStorage.user).toEqual(JSON.stringify(res.user));
 		}));
 });
